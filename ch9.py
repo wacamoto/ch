@@ -22,18 +22,12 @@ def calPostorder(s):
 			n1 = s[position - 2]
 			n2 = s[position - 1]
 			break
-
-	if operator == '+':
-		cal = n1 + n2
-	if operator == '-':
-		cal = n1 - n2
-	if operator == '*':
-		cal = n1 * n2
-	if operator == '/':
-		cal = n1 / n2
+	
+	cal = {'+':n1+n2,'-':n1-n2,'*':n1*n2,'/':n1/n2}[operator]
 
 	if len(s) > 3:
-		return calPostorder(s[0:position - 2] + [cal] + s[position + 1:])
+		s[position - 2:position + 1] = [cal]
+		return calPostorder(s)
 	else:
 		return cal
 
@@ -42,5 +36,5 @@ if __name__ == '__main__':
 		cal = sys.argv[1]
 	else:
 		cal = input("\"only\" using '+', '-', '*', '/'   Example: 1.5+1.6*2-10+6*2\n: ")
-	cal = calPostorder(postorder(cal))
-	print(cal)
+	ans = calPostorder(postorder(cal))
+	print(ans)

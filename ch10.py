@@ -4,8 +4,8 @@
 '''
 def combine(str1, str2 = ''):
 	if str1:
-		for i in range(len(str1)):
-			combine(str1[:i] + str1[i+1:],str2 = str2 + str1[i])
+		for index,item in enumerate(str1):
+			combine(str1[:index] + str1[index+1:],str2 + str1[index])
 	else:
 		print(str2)
 
